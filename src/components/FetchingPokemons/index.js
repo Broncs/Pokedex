@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Navigation from '../Navigation';
 import Link from 'next/link';
 
-const typesColors = {
+export const typesColors = {
   normal: '#A8A878',
   fighting: '#C03028',
   flying: '#A890F0',
@@ -75,7 +75,7 @@ export const PokemonImage = styled.div`
   }
 `;
 
-const PokemonDetails = styled.div`
+export const PokemonDetails = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -173,7 +173,7 @@ const PokemonDetails = styled.div`
   }
 `;
 
-const PokemonIndex = styled.span`
+export const PokemonIndex = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -221,7 +221,7 @@ const Pokemons = () => {
                   </p>
                 </div>
                 <div>
-                  <PokemonIndex>{index + 1}</PokemonIndex>
+                  <PokemonIndex>{id}</PokemonIndex>
                 </div>
               </PokemonDetails>
             </Pokemon>
