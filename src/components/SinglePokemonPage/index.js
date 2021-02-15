@@ -6,12 +6,25 @@ import {
   PokemonIndex,
   typesColors,
 } from '../FetchingPokemons';
+import Header from '../Header';
+
+const PokemonSingleDetails = styled(PokemonDetails)`
+  .type-wrapper {
+    width: 100%;
+  }
+`;
 
 const SinglePokemonWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  padding: 0 20px;
+  margin: 0;
+
+  @media (max-width: 600px) {
+    margin: 100px 0;
+  } ;
 `;
 
 const Pokemon = styled.div`
@@ -39,6 +52,50 @@ const PokemonImageBig = styled(PokemonImage)`
     height: auto;
     object-fit: cover;
     object-position: 50% 50%;
+  }
+`;
+
+const ProgressBar = styled.ul`
+  margin: 0;
+  padding: 0;
+
+  li {
+    margin: 9px 0;
+  }
+  p {
+    color: black;
+    font-weight: 600;
+
+    span {
+      color: #303943;
+      display: inline-block;
+      opacity: 0.8;
+      font-weight: 400;
+      width: 100px;
+    }
+  }
+
+  .progress-bar {
+    border-radius: 5px;
+    overflow: hidden;
+    width: 100%;
+
+    span {
+      display: block;
+    }
+  }
+  .bar {
+    background: rgba(0, 0, 0, 0.075);
+  }
+
+  .progress {
+    background: #4bc07a;
+    color: #fff;
+    padding: 5px;
+
+    &.progress-red {
+      background: #fb6c6c;
+    }
   }
 `;
 
@@ -72,42 +129,131 @@ const index = ({ pokemonName }) => {
   const { name, id, types, image, stats } = singlePokemon;
 
   return (
-    <SinglePokemonWrapper>
-      <Pokemon>
-        <PokemonImageBig>
-          <img src={image} alt={`${name} Thumbnail`} />
-        </PokemonImageBig>
-        <PokemonDetails typesColors={typesColors}>
-          <div className="type-wrapper">
-            <h3>{name}</h3>
-            <p>
-              {types &&
-                types.map((type, index) => {
-                  return (
-                    <span key={index} className={`type ${type}`}>
-                      {type}
-                    </span>
-                  );
-                })}
-            </p>
-            {stats && (
-              <ul>
-                <li>HP {stats[0]}</li>
-                <li>Attack {stats[1]}</li>
-                <li>Defense {stats[2]}</li>
-                <li>Sp. Atk {stats[3]}</li>
-                <li>Sp. Def {stats[4]}</li>
-                <li>Speed {stats[5]}</li>
-                <li>Total {stats.reduce((acc, curr) => acc + curr, 0)}</li>
-              </ul>
-            )}
-          </div>
-          <div>
-            <PokemonIndex>{id}</PokemonIndex>
-          </div>
-        </PokemonDetails>
-      </Pokemon>
-    </SinglePokemonWrapper>
+    <>
+      <Header />
+      <SinglePokemonWrapper>
+        <Pokemon>
+          <PokemonImageBig>
+            <img src={image} alt={`${name} Thumbnail`} />
+          </PokemonImageBig>
+          <PokemonSingleDetails typesColors={typesColors}>
+            <div className="type-wrapper">
+              <h2>{name}</h2>
+              <p>
+                {types &&
+                  types.map((type, index) => {
+                    return (
+                      <span key={index} className={`type ${type}`}>
+                        {type}
+                      </span>
+                    );
+                  })}
+              </p>
+              {stats && (
+                <ProgressBar>
+                  <li>
+                    <p>
+                      <span>HP</span>
+                      {stats[0]}
+                    </p>
+
+                    <div className="progress-bar">
+                      <span className="bar">
+                        <span
+                          className="progress progress-red"
+                          style={{ width: `${stats[0]}%` }}
+                        ></span>
+                      </span>
+                    </div>
+                  </li>
+
+                  <li>
+                    <p>
+                      <span>Attack</span>
+                      {stats[1]}
+                    </p>
+
+                    <div className="progress-bar">
+                      <span className="bar">
+                        <span
+                          className="progress"
+                          style={{ width: `${stats[1]}%` }}
+                        ></span>
+                      </span>
+                    </div>
+                  </li>
+                  <li>
+                    <p>
+                      <span>Defense</span>
+                      {stats[2]}
+                    </p>
+
+                    <div className="progress-bar ">
+                      <span className="bar">
+                        <span
+                          className="progress progress-red"
+                          style={{ width: `${stats[2]}%` }}
+                        ></span>
+                      </span>
+                    </div>
+                  </li>
+                  <li>
+                    <p>
+                      <span>Sp. Atk</span>
+                      {stats[3]}
+                    </p>
+
+                    <div className="progress-bar">
+                      <span className="bar">
+                        <span
+                          className="progress"
+                          style={{ width: `${stats[3]}%` }}
+                        ></span>
+                      </span>
+                    </div>
+                  </li>
+                  <li>
+                    <p>
+                      <span>Sp. Def</span>
+                      {stats[4]}
+                    </p>
+
+                    <div className="progress-bar">
+                      <span className="bar">
+                        <span
+                          className="progress"
+                          style={{ width: `${stats[4]}%` }}
+                        ></span>
+                      </span>
+                    </div>
+                  </li>
+                  <li>
+                    <p>
+                      <span>Speed</span>
+                      {stats[5]}
+                    </p>
+
+                    <div className="progress-bar">
+                      <span className="bar">
+                        <span
+                          className="progress progress-red"
+                          style={{ width: `${stats[5]}%` }}
+                        ></span>
+                      </span>
+                    </div>
+                  </li>
+
+                  <li>Total {stats.reduce((acc, curr) => acc + curr, 0)}</li>
+                </ProgressBar>
+              )}
+            </div>
+            <div>
+              <PokemonIndex>{id}</PokemonIndex>
+            </div>
+          </PokemonSingleDetails>
+        </Pokemon>
+      </SinglePokemonWrapper>
+    </>
   );
 };
 

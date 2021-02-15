@@ -5,7 +5,7 @@ const NavWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px 0;
+  margin: 20px;
 
   .eightbit-btn {
     background: #92cd41;
@@ -21,6 +21,10 @@ const NavWrapper = styled.div`
     margin: 0 20px;
     cursor: pointer;
     outline: none;
+
+    @media (max-width: 600px) {
+      font-size: 13px;
+    }
 
     &:hover,
     &:focus {
