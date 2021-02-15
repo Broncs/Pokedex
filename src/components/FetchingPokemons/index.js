@@ -23,6 +23,7 @@ const typesColors = {
   fairy: '#EE99AC',
   unknown: '#68A090',
   shadow: '#333158',
+  steel: '#B8B8D0',
 };
 
 const PokemonList = styled.ul`
@@ -108,12 +109,14 @@ const PokemonDetails = styled.div`
     }
     .fighting {
       background-color: ${({ typesColors }) => typesColors.fighting};
+      color: #fff;
     }
     .flying {
       background-color: ${({ typesColors }) => typesColors.flying};
     }
     .poison {
       background-color: ${({ typesColors }) => typesColors.poison};
+      color: #fff;
     }
     .ground {
       background-color: ${({ typesColors }) => typesColors.ground};
@@ -126,6 +129,7 @@ const PokemonDetails = styled.div`
     }
     .ghost {
       background-color: ${({ typesColors }) => typesColors.ghost};
+      color: #fff;
     }
     .fire {
       background-color: ${({ typesColors }) => typesColors.fire};
@@ -147,9 +151,11 @@ const PokemonDetails = styled.div`
     }
     .dragon {
       background-color: ${({ typesColors }) => typesColors.dragon};
+      color: #fff;
     }
     .dark {
       background-color: ${({ typesColors }) => typesColors.dark};
+      color: #fff;
     }
     .fairy {
       background-color: ${({ typesColors }) => typesColors.fairy};
@@ -159,6 +165,9 @@ const PokemonDetails = styled.div`
     }
     .shadow {
       background-color: ${({ typesColors }) => typesColors.shadow};
+    }
+    .steel {
+      background-color: ${({ typesColors }) => typesColors.steel};
     }
   }
 `;
@@ -207,7 +216,6 @@ const Pokemons = () => {
                       );
                     })}
                   </p>
-                  {/* <p className={types.join(' ')}>{types.join(', ')}</p> */}
                 </div>
                 <div>
                   <PokemonIndex>{index + 1}</PokemonIndex>
