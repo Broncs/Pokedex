@@ -29,13 +29,17 @@ export const typesColors = {
 
 export const PokemonList = styled.ul`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(10em, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(8em, 1fr));
   grid-gap: 1em;
   padding: 1em;
   margin: 0;
   filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.4));
+
   li {
     margin: 0;
+  }
+
+  @media (max-width: 600px) {
   }
 `;
 

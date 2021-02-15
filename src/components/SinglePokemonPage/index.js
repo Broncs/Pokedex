@@ -18,12 +18,12 @@ const SinglePokemonWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+
   padding: 0 20px;
-  margin: 0;
+  margin: 20px 0;
 
   @media (max-width: 600px) {
-    margin: 100px 0;
+    margin: 50px 0;
   } ;
 `;
 
