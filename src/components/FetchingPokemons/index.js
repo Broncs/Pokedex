@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import usePokemon from '../../hooks/usePokemon';
 import styled from 'styled-components';
+import Navigation from '../Navigation';
 
 const typesColors = {
   normal: '#A8A878',
@@ -178,40 +179,46 @@ const PokemonIndex = styled.span`
 `;
 
 const Pokemons = () => {
-  const { pokemon: allPokemon } = usePokemon();
+  const [pagination, setPagination] = useState(0);
 
+  const { pokemon: allPokemon, setPokemons } = usePokemon(pagination);
+
+  console.log(setPokemons);
   return (
-    <PokemonList>
-      {allPokemon.map((pokemon, index) => {
-        const { name, id, types, image } = pokemon;
+    <>
+      <PokemonList>
+        {allPokemon.map((pokemon, index) => {
+          const { name, id, types, image } = pokemon;
 
-        return (
-          <Pokemon key={id}>
-            <PokemonImage>
-              <img src={image} alt={`${name} Thumbnail`} />
-            </PokemonImage>
-            <PokemonDetails typesColors={typesColors}>
-              <div className="type-wrapper">
-                <h3>{name}</h3>
-                <p>
-                  {types.map((type, index) => {
-                    return (
-                      <span key={index} className={`type ${type}`}>
-                        {type}{' '}
-                      </span>
-                    );
-                  })}
-                </p>
-                {/* <p className={types.join(' ')}>{types.join(', ')}</p> */}
-              </div>
-              <div>
-                <PokemonIndex>{index + 1}</PokemonIndex>
-              </div>
-            </PokemonDetails>
-          </Pokemon>
-        );
-      })}
-    </PokemonList>
+          return (
+            <Pokemon key={id}>
+              <PokemonImage>
+                <img src={image} alt={`${name} Thumbnail`} />
+              </PokemonImage>
+              <PokemonDetails typesColors={typesColors}>
+                <div className="type-wrapper">
+                  <h3>{name}</h3>
+                  <p>
+                    {types.map((type, index) => {
+                      return (
+                        <span key={index} className={`type ${type}`}>
+                          {type}
+                        </span>
+                      );
+                    })}
+                  </p>
+                  {/* <p className={types.join(' ')}>{types.join(', ')}</p> */}
+                </div>
+                <div>
+                  <PokemonIndex>{index + 1}</PokemonIndex>
+                </div>
+              </PokemonDetails>
+            </Pokemon>
+          );
+        })}
+      </PokemonList>
+      <Navigation pagination={pagination} setPagination={setPagination} />
+    </>
   );
 };
 
