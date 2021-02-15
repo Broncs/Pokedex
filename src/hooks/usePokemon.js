@@ -10,9 +10,6 @@ const usePokemon = (pagination, setLoading) => {
       );
       const json = await data.json();
       const { results = [] } = json;
-
-      console.log(json);
-
       const pokemon = await Promise.all(
         results.map(async (result) => {
           const { url } = result;

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import usePokemon from '../../hooks/usePokemon';
 import styled from 'styled-components';
 import Navigation from '../Navigation';
+import Link from 'next/link';
 
 const typesColors = {
   normal: '#A8A878',
@@ -26,7 +27,7 @@ const typesColors = {
   steel: '#B8B8D0',
 };
 
-const PokemonList = styled.ul`
+export const PokemonList = styled.ul`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(10em, 1fr));
   grid-gap: 1em;
@@ -38,7 +39,7 @@ const PokemonList = styled.ul`
   }
 `;
 
-const Pokemon = styled.li`
+export const Pokemon = styled.li`
   position: relative;
   text-align: center;
   background-color: mintcream;
@@ -56,14 +57,14 @@ const Pokemon = styled.li`
   );
 `;
 
-const PokemonImage = styled.div`
+export const PokemonImage = styled.div`
   position: relative;
   height: 0;
   background-color: black;
   padding-top: 100%;
   border-radius: 0.15em;
   box-shadow: inset 0 -3px 10px rgba(255, 255, 255, 0.4);
-
+  cursor: pointer;
   img {
     position: absolute;
     top: 0;
@@ -190,9 +191,8 @@ const PokemonIndex = styled.span`
 const Pokemons = () => {
   const [pagination, setPagination] = useState(0);
 
-  const { pokemon: allPokemon, setPokemons } = usePokemon(pagination);
+  const { pokemon: allPokemon } = usePokemon(pagination);
 
-  console.log(setPokemons);
   return (
     <>
       <PokemonList>
@@ -201,9 +201,12 @@ const Pokemons = () => {
 
           return (
             <Pokemon key={id}>
-              <PokemonImage>
-                <img src={image} alt={`${name} Thumbnail`} />
-              </PokemonImage>
+              <Link href={`/pokemon/${name}`}>
+                <PokemonImage>
+                  <img src={image} alt={`${name} Thumbnail`} />
+                </PokemonImage>
+              </Link>
+
               <PokemonDetails typesColors={typesColors}>
                 <div className="type-wrapper">
                   <h3>{name}</h3>
