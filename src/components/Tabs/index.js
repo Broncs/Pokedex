@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import ProgressBar from '../ProgressBar';
 
 const Tabs = styled.div`
   .tabs-titles {
@@ -29,7 +30,7 @@ const Tabs = styled.div`
   }
 `;
 
-const index = ({ data }) => {
+const index = ({ data, stats }) => {
   const [visibleTab, setVisibleTab] = useState(data[0].id);
 
   const listTitles = data.map((item) => (
@@ -52,15 +53,16 @@ const index = ({ data }) => {
       <ul className="tabs-titles">{listTitles}</ul>
 
       <div className="tab-content">
-        {data.map((item) => {
-          return (
-            <div style={visibleTab === item.id ? {} : { display: 'none' }}>
-              {item.tabTitle == 'About' && <div>Hi lorena</div>}
-              {item.tabTitle == 'Base Stats' && <div>Joaquina</div>}
-              {item.tabTitle == 'Moves' && <div>Hi felipa</div>}
-            </div>
-          );
-        })}
+        {stats &&
+          data.map((item) => {
+            return (
+              <div style={visibleTab === item.id ? {} : { display: 'none' }}>
+                {item.tabTitle == 'About' && <div>Hi lorena</div>}
+                {item.tabTitle == 'Base Stats' && <ProgressBar stats={stats} />}
+                {item.tabTitle == 'Moves' && <div>Hi felipa</div>}
+              </div>
+            );
+          })}
       </div>
     </Tabs>
   );
