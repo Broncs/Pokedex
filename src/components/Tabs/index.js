@@ -1,36 +1,43 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import ProgressBar from '../ProgressBar';
+import AboutTab from '../AboutTab';
 
 const Tabs = styled.div`
   .tabs-titles {
     list-style: none;
     padding: 0px;
-    margin: 0;
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 10px;
   }
 
   .tab-title {
-    background-color: #fff;
+    background-color: mintcream;
     display: inline-block;
-    padding: 10px;
+    padding: 5px;
     color: #c7c6c2;
     cursor: pointer;
-    margin-left: 1px;
+
+    margin: 0;
   }
 
   .tab-title--active {
-    background-color: #f5f5f5;
     color: #00070a;
+
+    border-bottom: 2px solid dodgerblue;
   }
 
   .tab-content {
-    background-color: #f5f5f5;
     padding: 5px;
     margin: 0;
   }
 `;
 
-const index = ({ data, stats }) => {
+const index = ({ data, stats, pokemonName, weight, height }) => {
   const [visibleTab, setVisibleTab] = useState(data[0].id);
 
   const listTitles = data.map((item) => (
@@ -56,8 +63,17 @@ const index = ({ data, stats }) => {
         {stats &&
           data.map((item) => {
             return (
-              <div style={visibleTab === item.id ? {} : { display: 'none' }}>
-                {item.tabTitle == 'About' && <div>Hi lorena</div>}
+              <div
+                key={item.id}
+                style={visibleTab === item.id ? {} : { display: 'none' }}
+              >
+                {item.tabTitle == 'About' && (
+                  <AboutTab
+                    pokemonName={pokemonName}
+                    weight={weight}
+                    height={height}
+                  />
+                )}
                 {item.tabTitle == 'Base Stats' && <ProgressBar stats={stats} />}
                 {item.tabTitle == 'Moves' && <div>Hi felipa</div>}
               </div>

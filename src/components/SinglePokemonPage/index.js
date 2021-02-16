@@ -9,7 +9,6 @@ import {
 import Header from '../Header';
 import data from '../../data';
 import Tabs from '../Tabs';
-import ProgressBar from '../ProgressBar';
 
 const PokemonSingleDetails = styled(PokemonDetails)`
   .type-wrapper {
@@ -67,13 +66,16 @@ const index = ({ pokemonName }) => {
     );
     const json = await data.json();
 
-    const { id, name, types, sprites, stats } = json;
+    const { id, name, types, sprites, stats, weight, height } = json;
+    console.log(json);
     const obj = {
       id,
       name,
       types: types.map((type) => type.type.name),
       image: sprites.front_default,
       stats: stats.map((item) => item.base_stat),
+      weight,
+      height,
     };
 
     setSinglePokemon(obj);
@@ -85,7 +87,7 @@ const index = ({ pokemonName }) => {
     }
   }, []);
 
-  const { name, id, types, image, stats } = singlePokemon;
+  const { name, id, types, image, stats, weight, height } = singlePokemon;
 
   return (
     <>
@@ -109,7 +111,15 @@ const index = ({ pokemonName }) => {
                   })}
               </p>
 
-              {stats && <Tabs data={data} stats={stats} />}
+              {stats && (
+                <Tabs
+                  data={data}
+                  stats={stats}
+                  pokemonName={name}
+                  weight={weight}
+                  height={height}
+                />
+              )}
             </div>
             <div>
               <PokemonIndex>{id}</PokemonIndex>
