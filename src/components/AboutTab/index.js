@@ -21,6 +21,22 @@ const Box = styled.div`
   }
 `;
 
+const Breeding = styled.div`
+  margin-top: 10px;
+
+  p {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+  }
+
+  span {
+    opacity: 0.6;
+    font-weight: 400;
+    font-size: 0.7rem;
+  }
+`;
+
 const index = ({ pokemonName, height, weight }) => {
   const [aboutPokemon, setAboutPokemon] = useState([]);
 
@@ -30,10 +46,20 @@ const index = ({ pokemonName, height, weight }) => {
     );
     const json = await data.json();
 
-    const { capture_rate, flavor_text_entries } = json;
+    const {
+      capture_rate,
+      flavor_text_entries,
+      egg_groups,
+      habitat,
+      growth_rate,
+    } = json;
+    console.log(json);
     const obj = {
       capture_rate,
       about: flavor_text_entries[0].flavor_text,
+      egg_groups: egg_groups.map((item) => item.name),
+      habitat: habitat.name,
+      growthRate: growth_rate.name,
     };
     setAboutPokemon(obj);
   };
@@ -43,6 +69,7 @@ const index = ({ pokemonName, height, weight }) => {
       fetchPokemons({ pokemonName });
     }
   }, []);
+
   return (
     <div>
       <AboutWrapper className="about-Text">{aboutPokemon.about}</AboutWrapper>
@@ -58,8 +85,25 @@ const index = ({ pokemonName, height, weight }) => {
           <p>( {weight / 100} kg )</p>
         </div>
       </Box>
-
-      <p> Capture Rate{aboutPokemon.capture_rate}</p>
+      <Breeding>
+        <h3>Breeding</h3>
+        <p>
+          <span>Egg Groups</span>
+          {aboutPokemon.egg_groups && aboutPokemon.egg_groups.join(', ')}
+        </p>
+        <p>
+          <span>Capture Rate</span>
+          {aboutPokemon.capture_rate}
+        </p>
+        <p>
+          <span>Habitat</span>
+          {aboutPokemon.habitat}
+        </p>
+        <p>
+          <span>Growth rate</span>
+          {aboutPokemon.growthRate}
+        </p>
+      </Breeding>
     </div>
   );
 };

@@ -67,7 +67,7 @@ const index = ({ pokemonName }) => {
     const json = await data.json();
 
     const { id, name, types, sprites, stats, weight, height } = json;
-    console.log(json);
+
     const obj = {
       id,
       name,

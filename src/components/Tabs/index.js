@@ -32,8 +32,10 @@ const Tabs = styled.div`
   }
 
   .tab-content {
-    padding: 5px;
-    margin: 0;
+    background: #ebfffa;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin: 10px;
   }
 `;
 
