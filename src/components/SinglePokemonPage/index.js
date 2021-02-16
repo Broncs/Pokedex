@@ -7,6 +7,8 @@ import {
   typesColors,
 } from '../FetchingPokemons';
 import Header from '../Header';
+import data from '../../data';
+import Tabs from '../Tabs';
 
 const PokemonSingleDetails = styled(PokemonDetails)`
   .type-wrapper {
@@ -149,6 +151,9 @@ const index = ({ pokemonName }) => {
                     );
                   })}
               </p>
+
+              <Tabs data={data} />
+
               {stats && (
                 <ProgressBar>
                   <li>
