@@ -70,9 +70,16 @@ const index = ({ pokemonName, height, weight }) => {
     }
   }, []);
 
+  // const aboutText = aboutPokemon.about;
+  // console.log(aboutText);
+  // const newAboutText = aboutText.replace(/[^a-z0-9]/gi, ' ');
+  // console.log(newAboutText);
+
   return (
     <div>
-      <AboutWrapper className="about-Text">{aboutPokemon.about}</AboutWrapper>
+      <AboutWrapper className="about-Text">
+        {aboutPokemon.about && aboutPokemon.about.replace('', '')}
+      </AboutWrapper>
       <Box>
         <div>
           <p>Height</p>
