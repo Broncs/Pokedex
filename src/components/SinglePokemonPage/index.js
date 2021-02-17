@@ -108,7 +108,9 @@ const index = ({ pokemonName }) => {
     );
     const json = await data.json();
 
-    const { id, name, types, sprites, stats, weight, height } = json;
+    const { id, name, types, sprites, stats, weight, height, abilities } = json;
+
+    console.log(json);
 
     const obj = {
       id,
@@ -118,6 +120,7 @@ const index = ({ pokemonName }) => {
       stats: stats.map((item) => item.base_stat),
       weight,
       height,
+      skill: abilities.map((item) => item.ability.name),
     };
 
     setSinglePokemon(obj);
@@ -129,7 +132,16 @@ const index = ({ pokemonName }) => {
     }
   }, []);
 
-  const { name, id, types, image, stats, weight, height } = singlePokemon;
+  const {
+    name,
+    id,
+    types,
+    image,
+    stats,
+    weight,
+    height,
+    skill,
+  } = singlePokemon;
 
   return (
     <>
@@ -171,6 +183,7 @@ const index = ({ pokemonName }) => {
                   pokemonName={name}
                   weight={weight}
                   height={height}
+                  skill={skill}
                 />
               )}
             </div>

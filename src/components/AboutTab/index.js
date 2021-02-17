@@ -53,7 +53,9 @@ const index = ({ pokemonName, height, weight }) => {
       habitat,
       growth_rate,
     } = json;
+
     console.log(json);
+
     const obj = {
       capture_rate,
       about: flavor_text_entries[0].flavor_text,

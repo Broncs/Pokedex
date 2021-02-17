@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import ProgressBar from '../ProgressBar';
 import AboutTab from '../AboutTab';
+import Skill from '../Skill';
 
 const Tabs = styled.div`
   .tabs-titles {
@@ -39,7 +40,7 @@ const Tabs = styled.div`
   }
 `;
 
-const index = ({ data, stats, pokemonName, weight, height }) => {
+const index = ({ data, stats, pokemonName, weight, height, skill }) => {
   const [visibleTab, setVisibleTab] = useState(data[0].id);
 
   const listTitles = data.map((item) => (
@@ -54,9 +55,6 @@ const index = ({ data, stats, pokemonName, weight, height }) => {
     </li>
   ));
 
-  // <p style={visibleTab === item.id ? {} : { display: 'none' }}>
-  //   {item.tabContent}
-  // </p>
   return (
     <Tabs className="tabs">
       <ul className="tabs-titles">{listTitles}</ul>
@@ -77,7 +75,7 @@ const index = ({ data, stats, pokemonName, weight, height }) => {
                   />
                 )}
                 {item.tabTitle == 'Base Stats' && <ProgressBar stats={stats} />}
-                {item.tabTitle == 'Moves' && <div>Hi felipa</div>}
+                {item.tabTitle == 'Skills' && <Skill skill={skill} />}
               </div>
             );
           })}
