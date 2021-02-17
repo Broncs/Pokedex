@@ -9,6 +9,8 @@ import {
 import Header from '../Header';
 import data from '../../data';
 import Tabs from '../Tabs';
+import Link from 'next/link';
+import { IoChevronBack } from 'react-icons/io5';
 
 const PokemonSingleDetails = styled(PokemonDetails)`
   .type-wrapper {
@@ -49,11 +51,51 @@ const Pokemon = styled.div`
 `;
 
 const PokemonImageBig = styled(PokemonImage)`
+  margin-top: 20px;
   img {
     width: 100%;
     height: auto;
     object-fit: cover;
     object-position: 50% 50%;
+  }
+`;
+const RedLink = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  text-decoration: none;
+  width: 3em;
+  height: 3em;
+
+  font-size: 0.7em;
+  font-weight: bold;
+  color: white;
+  background-color: dodgerblue;
+  border-radius: 100%;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+`;
+const Dot = styled.div`
+  position: absolute;
+  top: 11px;
+  left: 50px;
+  .dot {
+    height: 10px;
+    width: 10px;
+    background-color: red;
+    display: inline-block;
+    border-radius: 50%;
+    margin: 5px;
+    border: 1px solid black;
+  }
+
+  .dot-2 {
+    background-color: yellow;
+  }
+  .dot-3 {
+    background-color: green;
   }
 `;
 
@@ -94,6 +136,17 @@ const index = ({ pokemonName }) => {
       <Header />
       <SinglePokemonWrapper>
         <Pokemon>
+          <Link href="/" passHref>
+            <RedLink>
+              <IoChevronBack style={{ fontSize: '1rem' }} />
+            </RedLink>
+          </Link>
+          <Dot>
+            <div className="dot dot-1"></div>
+            <div className="dot dot-2"></div>
+            <div className="dot dot-3"></div>
+          </Dot>
+
           <PokemonImageBig>
             <img src={image} alt={`${name} Thumbnail`} />
           </PokemonImageBig>
