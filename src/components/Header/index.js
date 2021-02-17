@@ -13,10 +13,7 @@ const Header = styled.header`
     text-decoration: none;
     color: white;
   }
-  p {
-    font-size: 3rem;
-    margin: 0;
-  }
+
   li {
     margin: 0;
   }
@@ -26,6 +23,16 @@ const Header = styled.header`
     justify-content: space-between;
     align-items: center;
   }
+
+  img {
+    height: 80px;
+    cursor: pointer;
+  }
+  @media (max-width: 600px) {
+    img {
+      height: 50px;
+    }
+  }
 `;
 
 const index = () => {
@@ -33,7 +40,12 @@ const index = () => {
     <Header>
       <Container>
         <nav>
-          <p>Pokédex</p>
+          <Link href="/">
+            <img
+              src="https://cdn.bulbagarden.net/upload/4/4b/Pok%C3%A9dex_logo.png"
+              alt="pokedex"
+            />
+          </Link>
           <ul>
             <li>
               <Link href="/">
