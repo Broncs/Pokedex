@@ -111,6 +111,7 @@ export const PokemonDetails = styled.div`
 
     .normal {
       background-color: ${({ typesColors }) => typesColors.normal};
+      color: #fff;
     }
     .fighting {
       background-color: ${({ typesColors }) => typesColors.fighting};
@@ -131,6 +132,7 @@ export const PokemonDetails = styled.div`
     }
     .bug {
       background-color: ${({ typesColors }) => typesColors.bug};
+      color: #fff;
     }
     .ghost {
       background-color: ${({ typesColors }) => typesColors.ghost};
@@ -138,9 +140,11 @@ export const PokemonDetails = styled.div`
     }
     .fire {
       background-color: ${({ typesColors }) => typesColors.fire};
+      color: #fff;
     }
     .water {
       background-color: ${({ typesColors }) => typesColors.water};
+      color: #fff;
     }
     .grass {
       background-color: ${({ typesColors }) => typesColors.grass};

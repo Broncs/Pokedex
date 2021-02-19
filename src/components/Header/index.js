@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import Container from '../Container';
 
 const Header = styled.header`
-  width: 100%;
   color: white;
   background-color: #c70039;
   color: white;
@@ -12,10 +11,6 @@ const Header = styled.header`
   a {
     text-decoration: none;
     color: white;
-  }
-
-  li {
-    margin: 0;
   }
 
   nav {
@@ -35,6 +30,16 @@ const Header = styled.header`
   }
 `;
 
+const NavLinks = styled.ul`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  li {
+    margin: 0 10px;
+  }
+`;
+
 const index = () => {
   return (
     <Header>
@@ -46,13 +51,18 @@ const index = () => {
               alt="pokedex"
             />
           </Link>
-          <ul>
+          <NavLinks>
             <li>
               <Link href="/">
                 <a>Home</a>
               </Link>
             </li>
-          </ul>
+            <li>
+              <Link href="/about">
+                <a>About</a>
+              </Link>
+            </li>
+          </NavLinks>
         </nav>
       </Container>
     </Header>
