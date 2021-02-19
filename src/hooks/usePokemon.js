@@ -1,23 +1,32 @@
 import { useEffect, useState } from 'react';
 
-const usePokemon = (pagination, setLoading) => {
+const usePokemon = (pagination, setIsLoading) => {
   const [pokemons, setPokemons] = useState([]);
 
   useEffect(() => {
     const fetchPokemons = async () => {
-      const data = await fetch(
-        `https://pokeapi.co/api/v2/pokemon/?offset=${pagination}&limit=20`
-      );
-      const json = await data.json();
-      const { results = [] } = json;
-      const pokemon = await Promise.all(
-        results.map(async (result) => {
-          const { url } = result;
-          const pokeResponse = await fetch(url);
-          return await pokeResponse.json();
-        })
-      );
-      setPokemons(pokemon);
+      setIsLoading(true);
+      try {
+        const data = await fetch(
+          `https://pokeapi.co/api/v2/pokemon/?offset=${pagination}&limit=20`
+        );
+        const json = await data.json();
+        const { results = [] } = json;
+        const pokemon = await Promise.all(
+          results.map(async (result) => {
+            const { url } = result;
+            const pokeResponse = await fetch(url);
+            return await pokeResponse.json();
+          })
+        );
+        setPokemons(pokemon);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 800);
+      } catch (e) {
+        console.log(e);
+        setIsLoading(false);
+      }
     };
     fetchPokemons();
   }, [pagination]);

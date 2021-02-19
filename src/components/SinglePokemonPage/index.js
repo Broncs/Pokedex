@@ -103,25 +103,38 @@ const index = ({ pokemonName }) => {
   const [singlePokemon, setSinglePokemon] = useState([]);
 
   const fetchPokemons = async ({ pokemonName }) => {
-    const data = await fetch(
-      `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
-    );
-    const json = await data.json();
+    try {
+      const data = await fetch(
+        `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
+      );
+      const json = await data.json();
 
-    const { id, name, types, sprites, stats, weight, height, abilities } = json;
+      const {
+        id,
+        name,
+        types,
+        sprites,
+        stats,
+        weight,
+        height,
+        abilities,
+      } = json;
 
-    const obj = {
-      id,
-      name,
-      types: types.map((type) => type.type.name),
-      image: sprites.front_default,
-      stats: stats.map((item) => item.base_stat),
-      weight,
-      height,
-      skill: abilities.map((item) => item.ability.name),
-    };
+      const obj = {
+        id,
+        name,
+        types: types.map((type) => type.type.name),
+        image: sprites.front_default,
+        stats: stats.map((item) => item.base_stat),
+        weight,
+        height,
+        skill: abilities.map((item) => item.ability.name),
+      };
 
-    setSinglePokemon(obj);
+      setSinglePokemon(obj);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {

@@ -41,27 +41,31 @@ const index = ({ pokemonName, height, weight }) => {
   const [aboutPokemon, setAboutPokemon] = useState([]);
 
   const fetchPokemons = async ({ pokemonName }) => {
-    const data = await fetch(
-      `https://pokeapi.co/api/v2/pokemon-species/${pokemonName}`
-    );
-    const json = await data.json();
+    try {
+      const data = await fetch(
+        `https://pokeapi.co/api/v2/pokemon-species/${pokemonName}`
+      );
+      const json = await data.json();
 
-    const {
-      capture_rate,
-      flavor_text_entries,
-      egg_groups,
-      habitat,
-      growth_rate,
-    } = json;
+      const {
+        capture_rate,
+        flavor_text_entries,
+        egg_groups,
+        habitat,
+        growth_rate,
+      } = json;
 
-    const obj = {
-      capture_rate,
-      about: flavor_text_entries[0].flavor_text,
-      egg_groups: egg_groups.map((item) => item.name),
-      habitat: habitat.name,
-      growthRate: growth_rate.name,
-    };
-    setAboutPokemon(obj);
+      const obj = {
+        capture_rate,
+        about: flavor_text_entries[0].flavor_text,
+        egg_groups: egg_groups.map((item) => item.name),
+        habitat: habitat ? habitat.name : 'unknown',
+        growthRate: growth_rate.name,
+      };
+      setAboutPokemon(obj);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {

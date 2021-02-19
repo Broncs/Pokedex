@@ -2,12 +2,16 @@ import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 import Container from '../Container';
+import CustomLink from '../CustomLink';
 
 const Header = styled.header`
   color: white;
   background-color: #c70039;
   color: white;
 
+  .selected {
+    border-bottom: 1px solid white;
+  }
   a {
     text-decoration: none;
     color: white;
@@ -53,14 +57,14 @@ const index = () => {
           </Link>
           <NavLinks>
             <li>
-              <Link href="/">
-                <a>Home</a>
-              </Link>
+              <CustomLink href="/">
+                <a>Inicio</a>
+              </CustomLink>
             </li>
             <li>
-              <Link href="/about">
-                <a>About</a>
-              </Link>
+              <CustomLink href="/sobre">
+                <a>Sobre</a>
+              </CustomLink>
             </li>
           </NavLinks>
         </nav>
