@@ -54,8 +54,6 @@ const index = ({ pokemonName, height, weight }) => {
       growth_rate,
     } = json;
 
-    console.log(json);
-
     const obj = {
       capture_rate,
       about: flavor_text_entries[0].flavor_text,
@@ -71,11 +69,6 @@ const index = ({ pokemonName, height, weight }) => {
       fetchPokemons({ pokemonName });
     }
   }, []);
-
-  // const aboutText = aboutPokemon.about;
-  // console.log(aboutText);
-  // const newAboutText = aboutText.replace(/[^a-z0-9]/gi, ' ');
-  // console.log(newAboutText);
 
   return (
     <div>

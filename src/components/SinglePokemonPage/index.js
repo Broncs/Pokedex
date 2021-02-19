@@ -110,8 +110,6 @@ const index = ({ pokemonName }) => {
 
     const { id, name, types, sprites, stats, weight, height, abilities } = json;
 
-    console.log(json);
-
     const obj = {
       id,
       name,
@@ -127,10 +125,10 @@ const index = ({ pokemonName }) => {
   };
 
   useEffect(() => {
-    if (pokemonName) {
+    if (pokemonName !== undefined) {
       fetchPokemons({ pokemonName });
     }
-  }, []);
+  }, [pokemonName]);
 
   const {
     name,
