@@ -57,6 +57,16 @@ const PokemonImageBig = styled(PokemonImage)`
     height: auto;
     object-fit: cover;
     object-position: 50% 50%;
+    animation: taadaa 1.3s ease-in-out;
+  }
+  @keyframes taadaa {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
   }
 `;
 const RedLink = styled.a`
