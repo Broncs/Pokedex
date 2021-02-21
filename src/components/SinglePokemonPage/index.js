@@ -111,12 +111,19 @@ const Dot = styled.div`
 
 const index = ({ pokemonName }) => {
   const [singlePokemon, setSinglePokemon] = useState([]);
+  const [error, setError] = useState(false);
 
   const fetchPokemons = async ({ pokemonName }) => {
     try {
       const data = await fetch(
         `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
       );
+
+      if (data.ok) {
+        console.log('ok');
+      } else {
+        console.log('error');
+      }
       const json = await data.json();
 
       const {
