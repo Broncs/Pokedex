@@ -1,16 +1,17 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import {
-  PokemonImage,
-  PokemonDetails,
-  PokemonIndex,
-  typesColors,
-} from '../FetchingPokemons';
+
 import Header from '../Header';
 import data from '../../data';
 import Tabs from '../Tabs';
 import Link from 'next/link';
 import { IoChevronBack } from 'react-icons/io5';
+import {
+  PokemonDetails,
+  PokemonImage,
+  typesColors,
+  PokemonIndex,
+} from '../../styles/components/FetchingPokemons';
 
 const PokemonSingleDetails = styled(PokemonDetails)`
   .type-wrapper {

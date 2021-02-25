@@ -1,10 +1,4 @@
-import styled from 'styled-components';
-
-const Skills = styled.div`
-  p.skill {
-    font-size: 1.2rem;
-  }
-`;
+import { Skills } from '../../styles/components/Skill';
 
 const index = ({ skill }) => {
   return (

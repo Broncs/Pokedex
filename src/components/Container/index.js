@@ -1,12 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
-
-const Container = styled.div`
-  width: 100%;
-  max-width: 56em;
-  margin: 0 auto;
-  padding: 0 20px;
-`;
+import { Container } from '../../styles/components/Container';
 
 const index = ({ children }) => {
   return <Container>{children}</Container>;

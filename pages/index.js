@@ -1,17 +1,8 @@
-import styled from 'styled-components';
 import FetchingPokemon from '../src/components/FetchingPokemons';
 import Header from '../src/components/Header/index';
 import Container from '../src/components/Container';
 import Head from 'next/head';
-
-const Wrapper = styled.main`
-  display: flex;
-  text-align: center;
-  flex-direction: column;
-  align-content: center;
-  justify-content: center;
-  padding: 0;
-`;
+import { Wrapper } from '../src/styles/pages/HomePage';
 
 export default function Home() {
   return (
