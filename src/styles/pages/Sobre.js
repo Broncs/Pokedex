@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const AboutPage = styled.div`
   font-family: 'Poppins', sans-serif;
   color: white;
-  text-align: center;
 
   h1 {
     color: white;
@@ -16,6 +15,9 @@ export const AboutPage = styled.div`
     align-items: flex-start;
     margin: 20px 0;
   }
+  .about-text {
+    padding: 2rem;
+  }
   .image-wrapper {
     text-align: center;
     margin-bottom: 20px;
@@ -25,6 +27,7 @@ export const AboutPage = styled.div`
     }
   }
   @media (max-width: 600px) {
+    text-align: center;
     .wrapper {
       display: block;
     }

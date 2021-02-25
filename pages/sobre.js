@@ -17,7 +17,7 @@ const about = () => {
                 alt="pokedex"
               />
             </div>
-            <div>
+            <div className="about-text">
               Pokémon é uma franquia de mídia que pertence a The Pokémon
               Company, tendo sido criada por Satoshi Tajiri em 1995. Ela é
               centrada em criaturas ficcionais chamadas "Pokémon", que os seres
@@ -34,7 +34,7 @@ const about = () => {
                 alt="pokedex"
               />
             </div>
-            <div>
+            <div className="about-text">
               Esse projeto foi realizado pra praticar minhas habilidades,
               utilizado as tecnologias Next.js, Styled Components,e React icons.
               Os dados são fornecidos por uma RestfulApi chamada PokeApi.
