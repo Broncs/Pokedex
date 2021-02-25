@@ -15,10 +15,14 @@ const usePokemon = (pagination, setIsLoading) => {
         const pokemon = await Promise.all(
           results.map(async (result) => {
             const { url } = result;
+
             const pokeResponse = await fetch(url);
-            return await pokeResponse.json();
+            if (pokeResponse.ok) {
+              return await pokeResponse.json();
+            }
           })
         );
+
         setPokemons(pokemon);
         setTimeout(() => {
           setIsLoading(false);
@@ -32,14 +36,23 @@ const usePokemon = (pagination, setIsLoading) => {
   }, [pagination]);
 
   const pokemon = pokemons.map((pokemon) => {
-    const { id, name, types, sprites } = pokemon;
+    if (pokemon) {
+      const { id, name, types, sprites } = pokemon;
 
-    return {
-      id,
-      name,
-      types: types.map((type) => type.type.name),
-      image: sprites.front_default,
-    };
+      return {
+        id,
+        name,
+        types: types && types.map((type) => type.type.name),
+        image: sprites.front_default,
+      };
+    } else {
+      return {
+        id: '',
+        name: 'notfound',
+        types: ['notfound'],
+        image: 'notfound',
+      };
+    }
   });
   return { pokemon };
 };
