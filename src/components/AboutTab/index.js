@@ -34,10 +34,12 @@ const index = ({ pokemonName, height, weight }) => {
   };
 
   useEffect(() => {
-    if (pokemonName) {
-      fetchPokemons({ pokemonName });
+    if (!pokemonName) {
+      return;
     }
-  }, []);
+
+    fetchPokemons({ pokemonName });
+  }, [pokemonName]);
 
   return (
     <div>

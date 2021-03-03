@@ -15,7 +15,7 @@ const index = ({ pagination, setPagination }) => {
       <button
         className="eightbit-btn "
         onClick={() => {
-          if (pagination < 700) {
+          if (pagination <= 1000) {
             setPagination((prevValue) => prevValue + 20);
           } else {
             setPagination(0);

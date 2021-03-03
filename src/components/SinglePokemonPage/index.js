@@ -150,9 +150,11 @@ const index = ({ pokemonName }) => {
   };
 
   useEffect(() => {
-    if (pokemonName !== undefined) {
-      fetchPokemons({ pokemonName });
+    if (!pokemonName) {
+      return;
     }
+
+    fetchPokemons({ pokemonName });
   }, [pokemonName]);
 
   const {
